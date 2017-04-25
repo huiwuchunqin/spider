@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<title>用户登录 - 菁优网</title>
+<meta name="robots" content="noindex, nofollow" />
+<style type="text/css">
+html, body {
+	overflow: hidden;
+	font-size: 14px;
+	padding: 0;
+	margin: 0
+}
+
+ul, ol, li {
+	list-style: none;
+	padding: 0;
+	margin: 0
+}
+
+input {
+	border: 1px solid #919191;
+	height: 18px;
+	padding: 3px 0 2px 2px;
+	vertical-align: middle;
+	font-size: 12px
+}
+
+input.checkbox {
+	border: 0;
+	margin: 0 5px;
+	vertical-align: middle
+}
+
+input.text {
+	width: 150px;
+	height: 18px;
+	line-height: 18px;
+	padding-left: 3px;
+	border: 1px solid #6A9ED2;
+	background: #fff;
+	ime-mode: disabled;
+}
+
+input.button {
+	height: 24px;
+	line-height: 22px;
+	padding: 0 5px;
+	margin: 3px 5px 3px 0;
+	cursor: pointer;
+	vertical-align: middle
+}
+
+ul li {
+	width: 100%;
+	line-height: 32px;
+	height: 32px;
+	padding: 4px 0;
+	display: block;
+	clear: both;
+	text-align: left
+}
+
+ul li label.first {
+	float: left;
+	width: 95px;
+	text-align: right;
+	display: block;
+	line-height: 26px;
+	font-size: 14px;
+	color: #101010;
+	padding: 0 10px
+}
+
+.lbtn {
+	line-height: 40px;
+	border: none;
+	color: #fff;
+	font-size: 14px;
+	vertical-align: middle;
+	background: url(http://img.jyeoo.net/images/jye.png) no-repeat -280px
+		-121px;
+	width: 80px;
+	height: 40px
+}
+
+a {
+	font-size: 12px
+}
+
+.loading {
+	background: url(http://img.jyeoo.net/images/loading.gif) no-repeat;
+	width: 16px;
+	height: 16px
+}
+
+.c10 {
+	height: 10px;
+	overflow: hidden;
+	clear: both
+}
+</style>
+<script type="text/javascript">document.domain="jyeoo.com";</script>
+<script type="text/javascript"
+	src="http://img.jyeoo.net/scripts/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<div
+		style="margin: 0; padding: 10px; text-align: center; border: 1px dotted #ccc; overflow: hidden"
+		id="LOGIN_DIV">
+		<form style="margin: 0px; padding: 0px" action="/account/loginform"
+			method="post">
+			<ul style="margin: 0px; padding: 0px">
+				<li><label class="first">登录帐号：</label><input class="text"
+					id="Email" maxlength="50" name="Email" placeholder="请输入手机号码或邮箱"
+					title="邮箱或手机号" type="text" value="" /></li>
+				<li><label class="first">登录密码：</label><input class="text"
+					id="Password" maxlength="16" name="Password" placeholder="请输入登录密码"
+					type="password" /></li>
+				<li
+					style="padding: 0; margin: 0; line-height: 13px; padding-top: 10px"><label
+					style="margin-right: 60px"> </label><img id="capimg"
+					src="/api/captcha/00000000000000000000000000000000?r=fa0b83c22ad4456f8ef098ab26966a7f"
+					alt="验证码" /><a href="javascript:void(0)" onclick="refCode()">换一题</a></li>
+				<li><label class="first">计算结果：</label><input class="text"
+					id="Captcha" maxlength="16" name="Captcha" type="text" value="" /></li>
+				<li><label style="margin-right: 95px"> </label><input
+					class="checkbox" data-val="true"
+					data-val-required="Remember 字段是必需的。" id="Remember" name="Remember"
+					type="checkbox" value="true" /><input name="Remember"
+					type="hidden" value="false" /><label for="Remember"
+					title="为了确保您的信息安全，请不要在网吧或者公共机房选择此项！&#10;如果今后要取消此选项，只需点击网站的“退出”链接即可">记住登录状态</label></li>
+				<li><label style="margin-right: 95px"> </label><input
+					type="submit" value="登录" class="button lbtn" style="height: 40px" /><a
+					href="http://www.jyeoo.com/account/register" target="_parent"
+					class="button lbtn"
+					style="display: inline-block; height: 40px; text-align: center; text-decoration: none">免费注册</a></li>
+			</ul>
+			<input data-val="true" data-val-required="Ver 字段是必需的。" id="Ver"
+				name="Ver" type="hidden" value="False" /> <input data-val="true"
+				data-val-required="AnonID 字段是必需的。" id="AnonID" name="AnonID"
+				type="hidden" value="00000000-0000-0000-0000-000000000000" /> <input
+				id="Title" name="Title" type="hidden" value="" />
+			<div id="divLEMsg" style="display: none">
+				<div class="validation-summary-errors" data-valmsg-summary="true">
+					<ul>
+						<li>请输入您在菁优网的“登录帐号”和“登录密码”。</li>
+					</ul>
+				</div>
+			</div>
+			<div class="c10"></div>
+		</form>
+		<div id="divLoading"
+			style="display: none; text-align: center; margin-top: 60px;">
+			<em class="loading">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em>
+		</div>
+		<script type="text/javascript">            if (checkCookie() == false) {                var div = document.getElementById("LOGIN_DIV");                div.innerHTML = '<div style="padding:20px;line-height:30px;color:red">您的浏览器设置已被禁用Cookies，您必须设置浏览器允许使用Cookies选项后才能正常登录。请参考帮助中心<a href="/support/cookies" target="_top">启用Cookies</a></div>';            }            document.getElementById("Email").focus();            if ("1" == "1") {                top.parent.showMessage(document.getElementById("divLEMsg").innerHTML, false);            } else if ("00000000-0000-0000-0000-000000000000" != "00000000-0000-0000-0000-000000000000") {                try { $.getScript("/api/conponforlively"); } catch (e) { }//添加优惠券                document.getElementsByTagName("form")[0].style.display = "none";                document.getElementById("divLoading").style.display = "";                top.parent.loginSuccess("00000000-0000-0000-0000-000000000000", "");            }            function checkCookie() {                try {                    if (navigator.cookiesEnabled) { return true; }                    document.cookie = "checkCookie=yes";                    var s = document.cookie, b = s.indexOf("checkCookie=yes") != -1;                    return b;                } catch (e) {                    return false;                }            }            function refCode(el) {                document.getElementById("capimg").src = "/api/captcha/00000000000000000000000000000000?w=160" + "&r=" + Math.random();            }            $(function () {                var ce = '1';                if (ce == '2') {                    $.ajax({                        url: "/api/getgeetestcaptcha?a=1&r=" + Math.random(),                        type: "get",                        dataType: "json",                        success: function (data) {                            initGeetest({                                gt: data.gt,                                challenge: data.challenge,                                product: "embed",                                offline: !data.success                            }, function (captchaObj) { captchaObj.appendTo("#Captcha"); });                        }                    });                    $('#Captcha').closest('li').height(200);                } else if (ce == '3') {                    $('#Captcha').closest('li').css({ 'height': '50px', 'padding-top': '10px' });                    new NECaptcha({ "element": "Captcha", "captchaId": "398f841726224dd1bdcd1a3d408b86ef", "width": 320 });                }            });        </script>
+	</div>
+	<div style="text-align: right; margin: 5px 0 0 0">
+		<a href="http://www.jyeoo.com/account/setpassword2" target="_parent"
+			rel="nofollow">忘记密码？</a>
+	</div>
+	<div style="clear: both; height: 10px"></div>
+</body>
+</html>
+
+
+
+</body>
+</html>

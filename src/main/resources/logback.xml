@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="60 seconds">
+	<property name="LOG_HOME" value="E:/log" />
+
+	<!-- 控制台输出日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level -%msg  %logger [%file:%line] %n</pattern>
+		</encoder>
+	</appender>
+	<!-- 文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/default.log</File>
+		<Encoding>UTF-8</Encoding>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/default.log.%i+
+			.bak</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>12</MaxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%file:%line] %logger{0} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 警告文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/warn.log</File>
+		<Encoding>UTF-8</Encoding>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>WARN</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/warn.log.%i.bak</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>12</MaxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%file:%line] %logger{0} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 错误文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/error.log</File>
+		<Encoding>UTF-8</Encoding>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>${LOG_HOME}/error.log.%i.bak</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>12</MaxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%file:%line] %logger{0} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 日志输出级别 -->
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="WARN_FILE" />
+		<appender-ref ref="ERROR_FILE" />
+	</root>
+
+
+</configuration>

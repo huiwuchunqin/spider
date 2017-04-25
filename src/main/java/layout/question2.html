@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+<!--鐢ㄥ湪360涓?->    <meta name="force-rendering" content="webkit"><!--鐢ㄥ湪鍏跺畠-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+<link rel="apple-touch-icon" href="/images/touchicon.png" />
+<meta name="csrf-param" content="_csrf">
+<meta name="csrf-token"
+	content="bXlZaWlzb1ggQRoQXjA6FxQuFyUxPAkNAE4YIURBNj5YPwwlAUUEFg==">
+<title>鎻愮ず</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<script>        (function(doc, win) {            // 鍩轰簬 window.screen.width 瀹炵幇鑷€傚簲甯冨眬            var screenWidth = 0,                size = 'XL',                root = doc.documentElement;            if (window.screen && screen.width) {                screenWidth = screen.width;                if (screenWidth >= 1200) size = 'XL'; // 澶у睆 - 1200px                         else if (screenWidth < 1200) size = 'XS'; // 灏忓睆 - 1000px            }            root.className += " " + size; // 鏍囪CSS            win.SIZE = size; // 鏍囪JS                })(document, window);        window.OT2 = {}; // 鍏ㄥ眬鍛藉悕绌洪棿        OT2.AboveIE9 = true; // 榛樿闈瀒E鎴朓E9鍙婁互涓?       OT2.ns = function(name) {            var container = OT2;            var parts = name.split('.');            var current = '';            if (parts[0] == 'OT2') parts.shift();            while (current = parts.shift()) {                if (!container[current]) container[current] = {};                container = container[current];            }            return container;        };                USER = {};//閫氱煡js鐢ㄦ埛鐨勪俊鎭?               OT2.CSRF = {"_csrf": "bXlZaWlzb1ggQRoQXjA6FxQuFyUxPAkNAE4YIURBNj5YPwwlAUUEFg=="} ;    </script>
+<!--[if lt IE 9]><script> OT2.AboveIE9= false;</script><![endif]-->
+<link rel="stylesheet" href="/css/base.min.css?v=3de2db9dcf" />
+<link rel="stylesheet" href="/css/spriter-mix.min.css?v=4e8a4afd3c" />
+<link rel="stylesheet" href="/lib/artDialog/css/ui-dialog.css" />
+<link rel="stylesheet" href="/css/artDialog-skin-ot2.min.css" />
+<link rel="stylesheet" href="/css/main.min.css?v=b52c68b755" />
+<link rel="stylesheet" href="/css/popup.min.css?v=52de7bc1f5" />
+<script src="/lib/jquery.min.js?v=6edfe6bd30"></script>
+<script type="text/javascript">$.ajaxSetup({cache: false});</script>
+<script src="/lib/underscore-min.js"></script>
+<script src="/js/cookie.min.js?v=6c6f9dd218"></script>
+<script src="/lib/json3.min.js"></script>
+<script src="/lib/artDialog/dist/dialog-plus.js"></script>
+<script src="/js/artDialog-config.min.js"></script>
+<script src="/js/element.min.js?v=52d0a65018"></script>
+<script src="/js/localdata.min.js?v=5d22ea43ab"></script>
+<script src="/js/util.min.js?v=9caab6e4b8"></script>
+</head>
+<body>
+	<link rel="stylesheet" href="/css/inner-user.min.css?v=e2e12ddba2" />
+	<style>
+body {
+	background: url(../images/bg-error.jpg);
+}
+
+.footer {
+	display: none;
+}
+
+.bridge-container {
+	position: absolute;
+	top: 70px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: auto;
+}
+
+.bridge-con {
+	min-height: 200px;
+	background: url(../images/blank.png) no-repeat left center;
+	padding-left: 150px;
+	margin: 0 auto;
+	float: left;
+}
+
+.bridge-container .bridge-success {
+	background-image: url(../images/blank-happy.png);
+}
+
+.bridge-bd {
+	line-height: 24px;
+}
+
+.bridge-bd a {
+	color: #3db06e;
+}
+
+.bridge-bd a:hover {
+	text-decoration: underline;
+}
+
+.bridge-bd .skip-seconds {
+	color: red;
+	margin: 0 2px;
+}
+
+.bridge-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: #3db06e;
+	padding-bottom: 20px;
+}
+</style>
+	<div class="header">
+		<div class="header-inner g-container f-cb">
+			<style>
+.user-news {
+	position: absolute;
+	top: 40px;
+	right: 0;
+	background: #fefefe;
+	width: 260px;
+	min-height: 112px;
+	line-height: 24px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	box-shadow: 0 0 10px #dcdcdc;
+	display: none;
+}
+
+.user-news-hd {
+	border-bottom: 1px solid #efefef;
+	padding-bottom: 4px;
+	margin: 6px 10px;
+	font-size: 12px;
+	color: #666;
+}
+
+.user-news .icon {
+	display: block;
+	top: -8px;
+	right: 40px;
+	position: absolute;
+}
+
+.user-news-close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 16px;
+	height: 16px;
+}
+
+.user-news-close img {
+	width: 100%;
+	height: 100%;
+}
+
+.vip-overtip {
+	text-align: center;
+}
+
+.vip-overtip {
+	padding-top: 6px;
+}
+
+.vip-overtip p strong {
+	color: red;
+	margin: 0 3px;
+}
+
+.vip-overtip .tip-notice {
+	color: red;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.vip-overtip a {
+	color: #52c684;
+}
+</style>
+			<script>function user_news() {    var remain = -1; // 鍓╀綑鍒版湡澶╂暟    var $usernews = $('.user-news');    var p = $usernews.parent();    var h = p.height();    p.css('position', 'relative');    $usernews.css('top', h + 'px');    var vip_overtip_close = OT2.Cookie.get('vip_overtip_date');    if (remain == 0 && vip_overtip_close == 'end') {        OT2.Cookie.set('vip_overtip_date', 'end', new Date(new Date().getTime() + 30 * 24 * 3600 * 1000)); // 鏇存柊cookie鏈夋晥鏈?       return false; // 缁撴潫涓嶆樉绀?   }    var d = new Date();    var v = [d.getFullYear(), d.getMonth(), d.getDate()].join('/');    if (!vip_overtip_close || vip_overtip_close != v) $usernews.show();    $usernews.find('.user-news-close').on('click', function() {        $usernews.hide();        if (remain == 0) {            OT2.Cookie.set('vip_overtip_date', 'end', new Date(new Date().getTime() + 30 * 24 * 3600 * 1000));            return false;        }        OT2.Cookie.set('vip_overtip_date', v, new Date(new Date().getTime() + 24 * 3600 * 1000));    });}</script>
+			<div class="header-logo">
+				<a href="/"><img src="/images/app_logo.png" alt="浜屼竴鏁欒偛" /></a>
+			</div>
+			<div class="header-nav">
+				<a href="http://oldzujuan.21cnjy.com/" target="_blank">銆愯繑鍥炴棫鐗堛€?/a>
+					<span class="split"></span> <a href="/" class="help"><i
+						class="icona-home"></i>缃戠珯棣栭〉</a> <span class="split"></span> <a
+					href="/help" class="help" target="_blank"><i class="icona-help"></i>甯姪涓績</a>
+					<span class="split"></span> <span class="topbar-dropmap"> <a
+						href="javascript:void(0);" target="_blank"><i
+							class="icona-buy"></i>璐拱鏈嶅姟</a>
+						<div class="drop-bd">
+							<ul>
+								<li><a onclick="return OT2.Global.initLogin();">VIP鏈嶅姟</a></li>
+								<li><a href="/help/request" target="_blank">缁勫嵎閫氭湇鍔?/a></li>
+								<li><a onclick="return OT2.Global.initLogin();">婵€娲籚IP</a></li>
+							</ul>
+							<span class="icona-dia-tri"></span>
+						</div>
+				</span> <span class="split"></span> <span class="topbar-dropmap"> <a
+						href="#"><i class="icona-qixia"></i>鏃椾笅绔欑偣</a>
+						<div class="drop-bd">
+							<ul>
+								<li><a target="_blank"
+									href="http://www.21cnjy.com/zhitongche/">鏍＄綉閫?/a></li>
+								<li><a target="_blank" href="http://zujuan.21cnjy.com/">鍦ㄧ嚎缁勫嵎</a></li>
+								<li><a target="_blank" href="http://www.jbzyk.com/">鏍℃湰璧勬簮搴?/a></li>
+								<li><a target="_blank" href="http://tiku.21cnjy.com/">鍦ㄧ嚎棰樺簱</a></li>
+								<li><a target="_blank"
+									href="http://www.21cnjy.com/video.php">鍚嶅笀璇惧爞</a></li>
+								<li><a target="_blank"
+									href="http://www.21cnjy.com/productshow/index.php?prod=school">鏁板瓧鍖栨牎鍥?/a></li>
+								<li><a target="_blank"
+									href="http://www.21cnjy.com/productshow/index.php?prod=yun">鍖哄煙浜戝钩鍙?/a></li>
+								<li><a target="_blank"
+									href="http://www.21cnjy.com/productshow/app/">浜屼竴鏁欒偛APP</a></li>
+							</ul>
+							<span class="icona-dia-tri"></span>
+						</div>
+				</span> <span class="split"></span>
+					<div class="loginbox">
+						<a shref="/login" class="login"
+							onclick="OT2.Global.initLogin(); return false;"><span>鐧诲綍</span></a>
+						<a href="/regist" class="register"><span>娉ㄥ唽</span></a>
+					</div> <span class="split"></span>
+			</div>
+		</div>
+	</div>
+	<script>    $(function(){        var toNote = '';        if(toNote){            var notice = null;            var d = dialog({                title: '鎻愰啋',                content: '<div class="email-con"><h1>'+notice[0]+'</h1><p>'+notice[1]+'</p></div>',//                okValue: '鍘婚獙璇?,//                ok: function () {//                    window.location.href = '<?//= Url::to(['/ucenter/u-safe'])?>//';//                },                fixed: true,                cancelValue: '鍙栨秷',                cancel: function() {}            });            d.showModal();        }    })</script>
+	<div class="bridge-container">
+		<div class="bridge-con" title="鎻愮ず">
+			<div class="bridge-bd">
+				<h2 class="bridge-title">
+					(#400) 鎮ㄦ彁浜ょ殑鏁版嵁鏃犳硶琚獙璇併€?/h2>
+					<h2 class="bridge-title">sorry锛?绯荤粺鍑洪敊浜嗭紝鐮佸啘姝ｅ湪鎶慨涓紒</h2>
+					<div>璇风◢鍊欏啀璇曪紝鎴?a href="/">銆愮偣鍑诲埛鏂般€?/a></div>
+			</div>
+		</div>
+	</div>
+	<script>function bridge_fixed() {    // 椤甸潰瀹氫綅    var H = $('.bridge-container').height();    var W = $('.bridge-container').width();    var w = $('.bridge-con').outerWidth();    var h = $('.bridge-con').height();    var h2 = $('.bridge-bd').height();    $('.bridge-con').css('margin-left', (W-w)/2+'px');    if (h < H) {        $('.bridge-con').css('margin-top', (H-h)/3 + 'px');    }    if (h > h2) {        $('.bridge-bd').css('padding-top', (h-h2)/2+'px');    }}function bridge_redirect() {    var $el = $('.skip-seconds');    if ($el.length == 0) return false;    var url = $el.data('url') || '/';    var seconds = parseInt($.trim($el.html()));    var updateSeconds = function() {        seconds--;        if (seconds == 0) {            window.location = url;            return false;        }        $el.html(seconds);        setTimeout(updateSeconds, 1000);    }    setTimeout(updateSeconds, 1000);}jQuery(function() {    bridge_fixed();    bridge_redirect();    });    </script>
+	<!--footer寮€濮?-><div class="footer">    <div class="footer-con g-container">        <div class="footer-top f-cb">            <div class="con-gs">                <h3>鍏徃浠嬬粛</h3>                <p>Company Introduction</p>                <ul>                    <li><i class="icona-ellipse"></i><a href="http://www.21cnjy.com/about/about_about.php" target="_blank">鍏徃绠€浠?/a></li>                    <li><i class="icona-ellipse"></i><a href="/help/copyright" target="_blank">鐗堟潈澹版槑</a></li>                    <li><i class="icona-ellipse"></i><a href="http://www.21cnjy.com/about/about_company-news.php" target="_blank">鍏徃鍔ㄦ€?/a></li>                    <li><i class="icona-ellipse"></i><a href="http://www.21cnjy.com/about/about_opinion.php" target="_blank">鎰忚鍙嶉</a></li>                </ul>            </div>            <div class="con-fw">                <h3>鏈嶅姟浠嬬粛</h3>                <p>Service Introduction</p>                <ul class="fw-list">                    <li><i class="icona-ellipse"></i><a href="/help/zujuan" target="_blank">缁勫嵎閫氭湇鍔?/a></li>                    <li><i class="icona-ellipse"></i><a href="/help/vip" target="_blank">VIP浼氬憳鏈嶅姟</a></li>                    <li><i class="icona-ellipse"></i><a href="/help/diy" target="_blank">瀛︽牎瀹氬埗鍖栨湇鍔?/a></li>                </ul>            </div>            <div class="con-bz">                <h3>甯姪涓績</h3>                <p>Help center</p>                <ul>                    <li><i class="icona-ellipse"></i><a href="/help/demo" target="_blank">瑙嗛甯姪</a></li>                    <li><i class="icona-ellipse"></i><a href="/help/faq" target="_blank">甯歌闂</a></li>                    <li><i class="icona-ellipse"></i><a href="/help/makepaper" target="_blank">濡備綍缁勫嵎</a></li>					                    <li><i class="icona-ellipse"></i><a href="/help/download" target="_blank">涓嬭浇璇曞嵎</a></li>                    <li><i class="icona-ellipse"></i><a href="/help/test" target="_blank">鍦ㄧ嚎娴嬭瘯</a></li><li><i class="icona-ellipse"></i><a href="/new" target="_blank">鏈€鏂拌瘯棰?/a></li>                </ul>            </div>            <div class="con-ewm">                <img src="/images/ewm.png" style="width:80px" alt="浜屼竴鏁欒偛APP"/>                <p>浜屼竴鏁欒偛APP</p>            </div>            <div class="con-lx">                <i class="icona-phone"></i>                <div class="lx-txt">                    <p class="lx-txt-p1">400-637-9991</p>                    <p class="lx-txt-p2">鍛ㄤ竴鑷冲懆浜? 8:30-17:30</p>                </div>                <div class="lx-teacher">                    <a href="javascript:;" id="jBizQQWPA"><i class="icona-kefu"></i>鍦ㄧ嚎鍜ㄨ瀹㈡湇</a>                </div>            </div>        </div>        <div class="footer-bottom">                        <p class="copyright">2006-2016 浜屼竴鏁欒偛鑲′唤鏈夐檺鍏徃<a href="http://www.miibeian.gov.cn/" class="copy">绮CP澶?1039084鍙?/a> 绮ゆ暀淇℃伅(2013)2鍙?/p>            <p class="footer-adress">                <span>閭紪锛?18000</span>                <span>鍦板潃锛氭繁鍦冲競榫欏矖鍖烘í宀楄閬撴繁宄拌矾3鍙峰惎鑸晢鍔″ぇ鍘?妤?M</span>            </p>        </div>	    </div>	</div><style>.system-upgrade  .system-upgrade-wall, .system-upgrade  .pop-wrap { display: block; }.system-upgrade-wall { position: fixed; top:0; right:0; left:0; bottom:0; background:#000; opacity: 0.3; filter:alpha(opacity=30); z-index: 10000; display: none; }.pop-wrap { width: 600px; background-color: #fff;  position: absolute; top: 60px;  left: 50%; margin-left: -300px; z-index: 12000; font-size: 14px; display: none; }.update span:first-child { margin-right: 30px; }.pop-banner img { display: block; }.pop-banner { position: relative; }.produce { position: absolute; top: -58px; left: 87px; }.pop-banner>span { cursor: pointer; display: block; width: 36px; height: 36px; position: absolute; background: url(/images/upgrade/close.png); right: -15px; top: -16px;}.main-wrap { padding: 20px 24px 45px 24px; max-height: 300px; overflow: auto; }.pop-icon { width: 4px; height: 16px; background-color: #52c684; float: left; margin-right: 10px; }.pop-title>h1 { font-size: 16px; float: left; }.pop-detail { clear: both; }#J_NoticeModal .pop-content { margin-top: 20px; text-align: left; margin:0; }.pop-detail li { line-height: 25px; }.pop-detail li a {  color: #52c684; }.pop-detail li a:hover { text-decoration:underline; }.pop-detail { padding-top: 15px;}.pop-title { overflow: hidden; margin-top: 10px; }#J_NoticeModal .pop-content h1 { margin-bottom: 0; font-size: 16px; font-weight: bold; }</style><div class="system-upgrade-wall"></div><div class="pop-wrap" id="J_NoticeModal">    <div class="pop-banner">        <img src="/images/upgrade/pop-banner.png" alt="浜屼竴缁勫嵎2.1.0.1鏇存柊鍏憡">        <img src="/images/upgrade/produce.png" alt="浜屼竴缁勫嵎2.1.0.1鏇存柊鍏憡" class="produce">        <span class="icon-close"></span>    </div>    <div class="main-wrap">        <div class="update">            <span>鏇存柊鐗堟湰锛?.1.0.1</span>            <span>鏇存柊鏃堕棿锛?017骞?鏈?1鏃?/span>        </div>        <div class="pop-content">            <div class="pop-title">                <div class="pop-icon"></div>                <h1>涓€銆佸弻鍚戠粏鐩〃缁勫嵎</h1>            </div>            <ul class="pop-detail">                <li>1銆佹柊澧炲弻鍚戠粏鐩〃缁勫嵎鍔熻兘锛屾暀甯堝彲浠ユ寜鐓ц€冭瘯闇€瑕侊紝鑷富鍒涘缓鍙屽悜缁嗙洰琛ㄨ繘琛岀粍鍗枫€?/li>                <li>2銆佹柊澧炵郴缁熸帹鑽愮粏鐩〃锛屾暀甯堝彲閫夋嫨鎺ㄨ崘鐨勭粏鐩〃锛屼竴閿嚭棰橈紝鏂逛究涓旂簿鍑嗐€?/li>                <li>3銆佹柊澧炵粏鐩〃鍒嗘瀽鍔熻兘锛屾暀甯堝湪缂栬緫缁嗙洰琛ㄧ殑鍚屾椂锛屽彲浠ュ疄鏃舵煡鐪嬬粏鐩〃鐨勮缁嗘儏鍐点€?/li>                <li>                    <a href="http://zujuan.21cnjy.com/help/notice?id=41" target="_blank">                    鐐瑰嚮姝ゅ锛屾煡鐪嬪弻鍚戠粏鐩〃缁勫嵎浣跨敤璇存槑>>                    </a>                </li>            </ul>        </div>        <div class="pop-content">            <div class="pop-title">                <div class="pop-icon"></div>                <h1>浜屻€佸叾浠?/h1>            </div>            <ul class="pop-detail">                <li>1銆佹柊澧炰簡褰撳墠椤甸潰鏌ョ湅璇曢瑙ｆ瀽鐨勫姛鑳姐€?/li>                <li>2銆佷紭鍖栦簡缁勫嵎VIP锛岃喘涔版椂闇€缁戝畾VIP鐨勫绉戙€?/li>                <li>3銆佺敤鎴蜂腑蹇冨鍔犱簡涓嬭浇璁板綍鐨勬煡璇㈠姛鑳姐€?/li>                <li>4銆佷紭鍖栦簡璇曢涓庤瘯鍗风殑鍏抽敭瀛楁悳绱㈠姛鑳斤紝瑙ｅ喅浜嗘悳绱㈠嚭鏉ョ殑璇曢鍋忓皯鐨勯棶棰橈紝鍚屾椂淇濈暀浜嗙粍鍗峰姛鑳姐€?/li>                <li>5銆佷紭鍖栦簡鏅鸿兘缁勫嵎鐨勬帓鐗堬紝浣夸俊鎭睍绀烘洿鍔犳竻妤氱洿瑙傘€?/li>            </ul>        </div>    </div></div><script>$(function() {    var SystemUpgrade = {        show_notice: function() {            var h = $(window).height(); // 鏄剧ず鍣ㄥ睆骞曢珮搴?           var h1 = this.$el.height();            if (h >= h1) {                this.$el.css({'top': ((h-h1+60)/2) + 'px', 'position': 'fixed'});            }            else {                this.$el.css({'position': 'absolute'});            }        },        isClosed: function() {            return OT2.LocalData.get('close_system_upgrade_notice');        },        clear_notice: function() {            this.$el.remove();            $('.system-upgrade-wall').remove();            OT2.LocalData.set('close_system_upgrade_notice', 1); // 褰诲簳鍏抽棴鍗囩骇鎻愮ず        },        init: function() {            var self = this;            this.$el = $('#J_NoticeModal');            this.$doc = $(document.documentElement);            this.$doc.addClass('system-upgrade');            this.$el.on('click', '.icon-close', function() {                self.clear_notice();            });            this.show_notice();            $(window).resize(function() {                self.show_notice();            });        }    };    if (!SystemUpgrade.isClosed()) SystemUpgrade.init();});</script><!--footer缁撴潫-->
+	<div id="Login_Pal" style="display: none">
+		<link rel="stylesheet" href="/css/reg.min.css?v=c8a2fa51d7" />
+		<style>
+.reg-form {
+	z-index: 1110;
+	left: 50%;
+	margin-left: -180px;
+	top: 0;
+}
+
+.reg-mask {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+	z-index: 1000;
+}
+
+.reg-form .btn-close {
+	position: absolute;
+	right: 16px;
+	top: 16px;
+	display: block;
+	text-indent: -9999px;
+	width: 24px;
+	height: 24px;
+	background: url(/images/close_24.png) no-repeat center center;
+}
+
+.reg-form .btn-close:hover {
+	opacity: 0.8;
+}
+</style>
+		<div class="reg-mask"></div>
+		<div class="reg-form">
+			<ul>
+				<li><a href="javascript:;" class="reg-active">鐧诲綍</a></li>
+			</ul>
+			<a class="btn-close J_CloseForm">x</a>
+			<form id="J_LoginForm" class="reg-form-detail" action="/login"
+				method="post">
+				<input type="hidden" name="_csrf"
+					value="bXlZaWlzb1ggQRoQXjA6FxQuFyUxPAkNAE4YIURBNj5YPwwlAUUEFg==">
+				<div class="reg-form-input">
+					<label for="account" class="placeholder">璇疯緭鍏ョ綉绔欒处鍙?鎵嬫満鍙风爜/閭</label>
+					<input type="text" name="LoginForm[username]" id="account"
+						placeholder="璇疯緭鍏ョ綉绔欒处鍙?鎵嬫満鍙风爜/閭">
+					<div class="fm-warn">
+						<p></p>
+						<i></i>
+					</div>
+				</div>
+				<div class="reg-form-input">
+					<label for="password" class="placeholder">璇疯緭鍏ュ瘑鐮?/label> <input
+						type="password" name="LoginForm[password]" id="password"
+						placeholder="璇疯緭鍏ュ瘑鐮?>            <div class="fm-warn">
+					<p></p>
+						<i></i>
+				</div>
+		</div>
+		<div class="login-line">
+			<div class="login-auto">
+				<span class="checkbox checked f-usn" onselectstart="return false"><i
+					class="icona-check"></i><input type="checkbox" checked="" value="1"
+					class="f-dn" name="LoginForm[rememberMe]">鑷姩鐧诲綍</span>
+			</div>
+			<div class="login-pwd">
+				<a
+					href="http://passport.21cnjy.com/site/password-find?jump_url=http://zujuan.21cnjy.com/question/list?knowledges=&question_channel_type=25&difficult_index=&exam_type=&kid_num=&grade_id%5B%5D=8&sortField=time&page=1&_=1492051658109"
+					target="_blank">蹇樿瀵嗙爜</a>
+			</div>
+		</div>
+		<div class="reg-btn">
+			<button type="submit">鐧诲綍</button>
+		</div>
+		</form>
+		<div class="login-others">
+			<div class="login-others-method">
+				鍏跺畠鐧诲綍鏂瑰紡锛? <a
+					href="http://passport.21cnjy.com/site/show-qr-code?jump_url=http://zujuan.21cnjy.com/question/list?knowledges=&question_channel_type=25&difficult_index=&exam_type=&kid_num=&grade_id%5B%5D=8&sortField=time&page=1&_=1492051658109"><i
+					class="icona-wxloginbtn"> </i></a> <a
+					href="http://21cnjy.com/qqconnect?jump_url=http://zujuan.21cnjy.com/question/list?knowledges=&question_channel_type=25&difficult_index=&exam_type=&kid_num=&grade_id%5B%5D=8&sortField=time&page=1&_=1492051658109"><i
+					class="icona-qqloginbtn"> </i></a>
+			</div>
+			<div class="login-reg">
+				<a
+					href="http://passport.21cnjy.com/site/register?jump_url=http://zujuan.21cnjy.com/question/list?knowledges=&question_channel_type=25&difficult_index=&exam_type=&kid_num=&grade_id%5B%5D=8&sortField=time&page=1&_=1492051658109">鍏嶈垂娉ㄥ唽<i
+					class="icona-right-arrow"></i></a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="/js/element.min.js?v=52d0a65018"></script>
+	<script src="/js/field.min.js?v=e38095a6b6"></script>
+	<script src="/js/user.min.js?v=01fdcf63f3"></script>
+	<script src="/js/global.min.js?v=6cbd974ec0"></script>
+	<script src="http://wpa.b.qq.com/cgi/wpa.php" type="text/javascript"></script>
+	<script>    BizQQWPA.addCustom({aty: '0', a: '0', nameAccount: 4006379991, selector: 'jBizQQWPA'});</script>
+	<div class="data">
+		<div class="inner-data">
+			<script type="text/javascript">//var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1668216'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1668216%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+		</div>
+	</div>
+	<script src="/assets/65b5f961/yii.js"></script>
+</body>
+</html>
